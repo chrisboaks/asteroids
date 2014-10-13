@@ -23,6 +23,9 @@
   Asteroid.prototype.collideWith = function (otherObj) {
     if (otherObj instanceof Asteroids.Ship) {
       otherObj.relocate();
+    } else if (otherObj instanceof Asteroids.Bullet) {
+      this.game.removeAsteroid(this);
+      this.game.removeBullet(otherObj);
     }
   };
 

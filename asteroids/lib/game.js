@@ -5,12 +5,14 @@
 
   var Game = Asteroids.Game = function() {
     this.asteroids = this.addAsteroids();
+    this.bullets = [];
     this.ship = new Asteroids.Ship(this);
   };
 
   Game.DIM_X = 600;
   Game.DIM_Y = 600;
   Game.NUM_ASTEROIDS = 4;
+
 
   Game.prototype.addAsteroids = function () {
     var result = [];
@@ -28,9 +30,18 @@
 
   Game.prototype.draw = function (ctx) {
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+    var game = this;
+    var bulletsToRemove = []
     this.allObjects().forEach(function (obj) {
-      obj.draw(ctx);
+      if (obj instanceof Asteroids.Bullet && Game.isOutOfBounds([obj.posX, obj.posY])) {
+        bulletsToRemove.push(obj);
+      } else {
+        obj.draw(ctx);
+      }
     });
+    if (bulletsToRemove.length > 0) {
+      game.removeBullets(bulletsToRemove)
+    };
   };
 
   Game.prototype.moveObjects = function () {
@@ -68,14 +79,29 @@
     this.checkCollisions();
   };
 
-  Game.prototype.remove = function (asteroid) {
+  Game.prototype.removeAsteroid = function (asteroid) {
     var i = this.asteroids.indexOf(asteroid);
     this.asteroids.splice(i, 1);
   };
 
   Game.prototype.allObjects = function () {
-    return this.asteroids.concat([this.ship]);
+    return this.asteroids.concat([this.ship]).concat(this.bullets);
   };
 
+  Game.prototype.addBullet = function (bullet) {
+    this.bullets.push(bullet);
+  };
+
+  Game.prototype.removeBullets = function (bulletsToRemove) {
+    var that = this;
+    bulletsToRemove.forEach(function (bullet) {
+      var i = that.bullets.indexOf(bullet);
+      that.bullets.splice(i, 1);
+    });
+  };
+
+  Game.isOutOfBounds = function (pos) {
+    return (pos[0] <= 0 || pos[1] <= 0 || pos[0] > Game.DIM_X || pos[1] > Game.DIM_Y);
+  };
 
 })();

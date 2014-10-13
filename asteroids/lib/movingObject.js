@@ -28,9 +28,14 @@
   };
 
   MovingObject.prototype.move = function () {
-    var pos = this.game.wrap([this.posX += this.velX, this.posY += this.velY]);
-    this.posX = pos[0];
-    this.posY = pos[1];
+    var possPos = this.game.wrap([this.posX += this.velX, this.posY += this.velY]);
+    if (this instanceof Asteroids.Bullet) {
+      this.posX += this.velX;
+      this.posY += this.velY;
+    } else {
+      this.posX = possPos[0];
+      this.posY = possPos[1];
+    }
   };
 
   MovingObject.prototype.isCollidedWith = function (otherObject) {
