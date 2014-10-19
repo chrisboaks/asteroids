@@ -5,10 +5,10 @@
 
   var Util = Asteroids.Util = function () { }
 
-  var inherits = Asteroids.Util.inherits = function (descendant, baseClass) {
+  var inherits = Asteroids.Util.inherits = function (childClass, parentClass) {
     function Surrogate () {};
-    Surrogate.prototype = baseClass.prototype;
-    descendant.prototype = new Surrogate();
+    Surrogate.prototype = parentClass.prototype;
+    childClass.prototype = new Surrogate();
   };
 
   var randomVec = Asteroids.Util.randomVec = function (length) {
@@ -26,7 +26,7 @@
   };
 
   var randomVectorOfLength = Asteroids.Util.randomVectorOfLength = function(length) {
-    var unitVector = Util.randomUnitVector;
+    var unitVector = Util.randomUnitVector();
     var x = unitVector[0];
     var y = unitVector[1];
     return [x * length, y * length];
@@ -41,7 +41,7 @@
   var normalize = Asteroids.Util.normalize = function (vec) {
     var thisLength = Utils.distance([0, 0], vec);
     return [vec[0] / thisLength, vec[1] / thisLength];
-  }
+  };
 
 
 
