@@ -1,6 +1,48 @@
 <html>
+  <head>
+    <style type="text/css">
+
+    h1, canvas, body {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font: inherit;
+    }
+
+      canvas {
+        display: block;
+        border: 1px solid black;
+        margin: auto;
+      }
+
+      body {
+        font-family: sans-serif;
+        padding: 25px auto;
+        width: 100%;
+
+      }
+
+      h1 {
+        text-align: center;
+        margin: 25px auto;
+        font-size: 36px;
+        font-weight: bold;
+      }
+
+    </style>
+
+    <title>Asteroids!</title>
+
+  </head>
+
   <body>
-    <canvas id='game-canvas' width='600' height='600'></canvas>
+
+
+
+
+    <h1>Asteroids!</h1>
+
+    <canvas id='game-canvas' height='600' width='600'></canvas>
 
 
     <script src='./lib/movingObject.js'></script>
@@ -20,9 +62,7 @@
       ).start();
 
     </script>
-    <style type="text/css">
-      canvas { border: 1px solid black; }
-    </style>
+
 
 
   </body>
