@@ -5,19 +5,32 @@
 
   var Game = Asteroids.Game = function() {
     this.asteroids = this.addAsteroids();
-    this.bullets = [];
+    this.bgstars = this.addBGStars();
+    // this.bullets = [];
     // this.ship = new Asteroids.Ship(this);
   };
 
   Game.DIM_X = 800;
   Game.DIM_Y = 600;
   Game.NUM_ASTEROIDS = 4;
+  Game.NUM_BGSTARS = 50;
 
+  Game.prototype.allObjects = function () {
+    return this.bgstars.concat(this.asteroids);
+  };
 
   Game.prototype.addAsteroids = function () {
     var result = [];
     for (var i = 0; i < Game.NUM_ASTEROIDS; i++) {
       result.push(new Asteroids.Asteroid({pos: this.randomPosition(), game: this}));
+    };
+    return result;
+  };
+
+  Game.prototype.addBGStars = function () {
+    var result = [];
+    for (var i = 0; i < Game.NUM_BGSTARS; i++) {
+      result.push(new Asteroids.BGStar({pos: this.randomPosition(), game: this}));
     };
     return result;
   };
@@ -31,7 +44,7 @@
   Game.prototype.draw = function (ctx) {
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
     var game = this;
-    this.asteroids.forEach(function (obj) {
+    this.allObjects().forEach(function (obj) {
       obj.draw(ctx);
     });
     // var bulletsToRemove = []
@@ -49,7 +62,7 @@
 
   Game.prototype.moveObjects = function () {
     var game = this;
-    this.asteroids.forEach(function (obj) {
+    this.allObjects().forEach(function (obj) {
       obj.move();
       if (game.isOutOfBounds(obj.pos) && obj.wrappable) {
         game.wrap(obj);
@@ -67,17 +80,6 @@
     obj.pos = [x, y];
   };
 
-  // Game.prototype.wrap = function (pos) {
-//     var x = pos[0] % Game.DIM_X;
-//     var y = pos[1] % Game.DIM_Y;
-//     if (x < 0) {
-//       x += Game.DIM_X;
-//     }
-//     if (y < 0) {
-//       y += Game.DIM_Y
-//     }
-//     return [x, y]
-//   };
 //
 //   Game.prototype.checkCollisions = function () {
 //     var allObjects = this.allObjects();

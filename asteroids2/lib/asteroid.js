@@ -18,7 +18,6 @@
 
   };
 
-  Asteroid.COLOR = 'gray';
   Asteroid.RADIUS = 20;
   Asteroid.VELOCITY = 5;
 
