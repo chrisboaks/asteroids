@@ -1,7 +1,5 @@
 (function () {
-  if (typeof Asteroids === 'undefined') {
-    window.Asteroids = {};
-  }
+  window.Asteroids = window.Asteroids || {}
 
   var GameView = Asteroids.GameView = function GameView(game, ctx) {
     this.game = game;
@@ -36,6 +34,7 @@
 
   GameView.prototype.start = function () {
     this.bindKeyHandlers();
+
     window.setInterval((function () {
       this.game.draw(this.ctx);
       this.game.step();

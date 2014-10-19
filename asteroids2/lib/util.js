@@ -1,7 +1,5 @@
 (function () {
-  if (typeof Asteroids === 'undefined') {
-    window.Asteroids = {};
-  }
+  window.Asteroids = window.Asteroids || {}
 
   var Util = Asteroids.Util = function () { }
 
@@ -42,10 +40,5 @@
     var thisLength = Utils.distance([0, 0], vec);
     return [vec[0] / thisLength, vec[1] / thisLength];
   };
-
-
-
-
-
 
 })();

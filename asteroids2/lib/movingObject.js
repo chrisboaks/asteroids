@@ -1,7 +1,5 @@
 (function () {
-  if (typeof Asteroids === 'undefined') {
-    window.Asteroids = {};
-  }
+  window.Asteroids = window.Asteroids || {}
 
   var MovingObject = Asteroids.MovingObject = function (options) {
     this.pos = options.pos;
@@ -32,20 +30,8 @@
     return (dist <= maxDist);
   };
 
-
-
-  // incorrectly deals with non-vecs and wrapping
   MovingObject.prototype.move = function () {
     this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]]
-    // var possPos = this.game.wrap([this.posX += this.velX, this.posY += this.velY]);
-    // if (this instanceof Asteroids.Bullet) {
-//       this.posX += this.velX;
-//       this.posY += this.velY;
-//     } else {
-//       this.posX = possPos[0];
-//       this.posY = possPos[1];
-//     }
   };
-
 
 })();

@@ -1,7 +1,5 @@
 (function () {
-  if (typeof Asteroids === 'undefined') {
-    window.Asteroids = {};
-  }
+  window.Asteroids = window.Asteroids || {}
 
   var Asteroid = Asteroids.Asteroid = function (options) {
 
@@ -15,20 +13,18 @@
     }
 
     Asteroids.MovingObject.call(this, newOptions);
-
   };
 
   Asteroid.RADIUS = 20;
   Asteroid.VELOCITY = 5;
+  Asteroid.COLORS = '3456789abc';
 
   Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
-
-  Asteroid.COLORS = '3456789abc';
 
   Asteroid.randomColor = function () {
     var char = Asteroid.COLORS[Math.floor(Math.random() * Asteroid.COLORS.length)];
     return '#' + char + char + char;
-  }
+  };
 
   // Asteroid.prototype.collideWith = function (otherObj) {
 //     if (otherObj instanceof Asteroids.Ship) {
