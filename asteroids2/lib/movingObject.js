@@ -9,6 +9,7 @@
     this.color = options.color;
     this.radius = options.radius;
     this.game = options.game;
+    this.wrappable = options.wrappable;
   };
 
   MovingObject.prototype.draw = function (ctx) {
