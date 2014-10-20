@@ -6,7 +6,7 @@
     var newOptions = {
       pos: options.pos,
       vel: Asteroids.Util.randomVectorOfLength(Asteroid.VELOCITY),
-      color: Asteroid.randomColor(),
+      color: Asteroid.brownGenerator(), //Asteroid.randomColor(),
       radius: Asteroid.RADIUS,
       game: options.game,
       wrappable: true
@@ -25,6 +25,12 @@
     var char = Asteroid.COLORS[Math.floor(Math.random() * Asteroid.COLORS.length)];
     return '#' + char + char + char;
   };
+
+  Asteroid.brownGenerator = function () {
+    var g = Math.floor(Math.random() * 30) + 40;
+    var r = 2 * g;
+    return 'rgb(' + [r, g, 0].join(',') + ')';
+  }
 
   // Asteroid.prototype.collideWith = function (otherObj) {
 //     if (otherObj instanceof Asteroids.Ship) {
