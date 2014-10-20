@@ -25,7 +25,7 @@
   };
 
   MovingObject.prototype.isCollidedWith = function (otherObject) {
-    var dist = Asteroids.Util.distance(this.pos, otherObject.pos);
+    var dist = Asteroids.Util.magnitude(this.pos, otherObject.pos);
     var maxDist = this.radius + otherObject.radius;
     return (dist <= maxDist);
   };

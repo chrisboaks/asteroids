@@ -30,15 +30,19 @@
     return [x * length, y * length];
   };
 
-  var distance = Asteroids.Util.distance = function(vec1, vec2) {
+  var magnitude = Asteroids.Util.magnitude = function(vec1, vec2) {
     dx = vec1[0] - vec2[0];
     dy = vec1[1] - vec2[1];
     return Math.sqrt(dx * dx + dy * dy);
   };
 
   var normalize = Asteroids.Util.normalize = function (vec) {
-    var thisLength = Utils.distance([0, 0], vec);
+    var thisLength = Utils.magnitude([0, 0], vec);
     return [vec[0] / thisLength, vec[1] / thisLength];
   };
+
+  var unitize = Asteroids.Util.unitize = function (angle) {
+    return [Math.cos(angle), Math.sin(angle)];
+  }
 
 })();

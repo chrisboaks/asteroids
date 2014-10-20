@@ -5,11 +5,12 @@
     this.asteroids = this.addDebris(Asteroids.Asteroid, Game.NUM_ASTEROIDS);
     this.bgstars = this.addDebris(Asteroids.BGStar, Game.NUM_BGSTARS);
     // this.bullets = [];
-    // this.ship = new Asteroids.Ship(this);
+    this.ship = new Asteroids.Ship({game: this});
+
   };
 
-  Game.DIM_X = 800;
-  Game.DIM_Y = 600;
+  Game.DIM_X = 1000;
+  Game.DIM_Y = 800;
   Game.NUM_ASTEROIDS = 4;
   Game.NUM_BGSTARS = 50;
 
@@ -55,7 +56,7 @@
   //  UTILITY  //
 
   Game.prototype.allObjects = function () {
-    return this.bgstars.concat(this.asteroids);
+    return this.bgstars.concat(this.asteroids).concat(this.ship);
   };
 
   Game.prototype.randomPosition = function () {
@@ -72,6 +73,10 @@
     var x = ((obj.pos[0] % Game.DIM_X) + Game.DIM_X) % Game.DIM_X;
     var y = ((obj.pos[1] % Game.DIM_Y) + Game.DIM_Y) % Game.DIM_Y;
     obj.pos = [x, y];
+  };
+
+  Game.prototype.canvasMidpoint = function () {
+    return [Game.DIM_X / 2, Game.DIM_Y / 2];
   };
 
 

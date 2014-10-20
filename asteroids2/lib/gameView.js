@@ -10,19 +10,19 @@
   //add more bindings!
   GameView.prototype.bindKeyHandlers = function () {
     key('w', function () {
-      this.game.ship.power([0, -1]);
+      this.game.ship.power(1);
     }.bind(this));
 
     key('a', function () {
-      this.game.ship.power([-1, 0]);
+      this.game.ship.turn(-1);
     }.bind(this));
 
     key('s', function () {
-      this.game.ship.power([0, 1]);
+      this.game.ship.power(-1);
     }.bind(this));
 
     key('d', function () {
-      this.game.ship.power([1, 0]);
+      this.game.ship.turn(1);
     }.bind(this));
 
     key('j', function () {
@@ -38,6 +38,6 @@
     window.setInterval((function () {
       this.game.draw(this.ctx);
       this.game.step();
-    }).bind(this), 20);
+    }).bind(this), 15);
   };
 })();
