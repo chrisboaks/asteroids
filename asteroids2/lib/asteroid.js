@@ -17,13 +17,16 @@
 
   Asteroid.RADIUS = 60;
   Asteroid.VELOCITY = 4;
-  Asteroid.COLORS = '3456789abc';
+  Asteroid.COLORS = '789';
 
   Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
 
   Asteroid.randomGray = function () {
-    var char = Asteroid.COLORS[Math.floor(Math.random() * Asteroid.COLORS.length)];
-    return '#' + char + char + char;
+    var char = function(){
+      return Math.floor(Math.random() * 7) + 60;
+    };
+    console.log(char(), char(), char())
+    return '#' + char() + char() + char();
   };
 
   Asteroid.brownGenerator = function () {
