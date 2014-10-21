@@ -6,7 +6,7 @@
     var newOptions = {
       pos: options.pos,
       vel: Asteroids.Util.randomVectorOfLength(Asteroid.VELOCITY),
-      color: Asteroid.brownGenerator(), //Asteroid.randomColor(),
+      color: Asteroid.randomGray(), //Asteroid.brownGenerator(),
       radius: Asteroid.RADIUS,
       game: options.game,
       wrappable: true
@@ -21,7 +21,7 @@
 
   Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
 
-  Asteroid.randomColor = function () {
+  Asteroid.randomGray = function () {
     var char = Asteroid.COLORS[Math.floor(Math.random() * Asteroid.COLORS.length)];
     return '#' + char + char + char;
   };

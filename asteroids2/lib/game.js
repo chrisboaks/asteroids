@@ -12,7 +12,7 @@
   Game.DIM_X = 1000;
   Game.DIM_Y = 800;
   Game.NUM_ASTEROIDS = 4;
-  Game.NUM_BGSTARS = 50;
+  Game.NUM_BGSTARS = 20;
 
 
 

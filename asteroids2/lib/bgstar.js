@@ -21,7 +21,7 @@
   Asteroids.Util.inherits(BGStar, Asteroids.MovingObject);
 
   BGStar.proximity = function () {
-    return Math.floor(Math.random() * 3 + 1);
+    return Math.floor(Math.random() * 4 + 1);
   }
 
 })();
