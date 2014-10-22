@@ -8,6 +8,7 @@
     this.radius = options.radius;
     this.game = options.game;
     this.wrappable = options.wrappable;
+    this.theta = 0;
   };
 
   MovingObject.prototype.draw = function (ctx) {

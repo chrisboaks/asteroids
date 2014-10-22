@@ -14,8 +14,6 @@
 
     Asteroids.MovingObject.call(this, newOptions);
 
-    this.theta = 0;
-
   };
 
   Asteroids.Util.inherits(Ship, Asteroids.MovingObject);
@@ -54,7 +52,7 @@
 
   Ship.prototype.draw = function(ctx) {
 
-    var coords = this.transformCoords(Ship.COORDS)
+    var coords = Asteroids.Util.transformCoords(Ship.COORDS, this.pos, this.theta)
 
     ctx.fillStyle = Ship.COLOR;
     ctx.strokeStyle = '#ccddff';
@@ -82,18 +80,7 @@
 
   };
 
-  Ship.prototype.transformCoords = function (coords) {
-    var results = [];
-    var ship = this;
-    var sin = Math.sin(this.theta);
-    var cos = Math.cos(this.theta);
-    coords.forEach(function (crd) {
-      var x = crd[0] * cos - crd[1] * sin + ship.pos[0];
-      var y = crd[0] * sin + crd[1] * cos + ship.pos[1];
-      results.push([x, y]);
-    })
-    return results;
-  };
+
 
   Ship.prototype.turn = function (dir) {
     this.theta += dir * Ship.OMEGA;

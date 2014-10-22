@@ -43,6 +43,19 @@
 
   var unitize = Asteroids.Util.unitize = function (angle) {
     return [Math.cos(angle), Math.sin(angle)];
-  }
+  };
+
+  var transformCoords = Asteroids.Util.transformCoords = function (coords, pos, theta) {
+    var results = [];
+    var ship = this;
+    var sin = Math.sin(theta);
+    var cos = Math.cos(theta);
+    coords.forEach(function (crd) {
+      var x = crd[0] * cos - crd[1] * sin + pos[0];
+      var y = crd[0] * sin + crd[1] * cos + pos[1];
+      results.push([x, y]);
+    })
+    return results;
+  };
 
 })();
