@@ -9,15 +9,16 @@
     this.game = options.game;
     this.wrappable = options.wrappable;
     this.theta = 0;
-    this.omega = options.omega;
+    this.driftOmega = options.driftOmega || 0;
   };
 
-  MovingObject.prototype.draw = function (ctx) {
+  MovingObject.prototype.draw = function (ctx, translation) {
+    var trans = translation || [0, 0]
     ctx.fillStyle = this.color;
     ctx.beginPath();
     ctx.arc(
-      this.pos[0],
-      this.pos[1],
+      this.pos[0] + trans[0],
+      this.pos[1] + trans[1],
       this.radius,
       0,
       2 * Math.PI,

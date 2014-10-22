@@ -10,7 +10,7 @@
       radius: Asteroid.RADIUS,
       game: options.game,
       wrappable: true,
-      omega: 0.15
+      driftOmega: 0.15
     }
 
     Asteroids.MovingObject.call(this, newOptions);
@@ -18,7 +18,7 @@
 
   Asteroid.RADIUS = 60;
   Asteroid.VELOCITY = 4;
-  Asteroid.COLORS = '789';
+  Asteroid.COLORS = '789';                                    // not used
 
   Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
 
@@ -29,7 +29,7 @@
     return '#' + char() + char() + char();
   };
 
-  Asteroid.brownGenerator = function () {
+  Asteroid.brownGenerator = function () {                     // not used
     var g = Math.floor(Math.random() * 30) + 40;
     var r = 2 * g;
     return 'rgb(' + [r, g, 0].join(',') + ')';

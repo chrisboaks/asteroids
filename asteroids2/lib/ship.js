@@ -9,8 +9,7 @@
       color: Ship.COLOR,
       radius: Ship.RADIUS,
       game: options.game,
-      wrappable: true,
-      omega: Ship.OMEGA
+      wrappable: true
     }
 
     Asteroids.MovingObject.call(this, newOptions);
@@ -51,9 +50,9 @@
     }
   };
 
-  Ship.prototype.draw = function(ctx) {
-
-    var coords = Asteroids.Util.transformCoords(Ship.COORDS, this.pos, this.theta)
+  Ship.prototype.draw = function(ctx, translation) {
+    var trans = translation || [0,0];
+    var coords = Asteroids.Util.transformCoords(Ship.COORDS, [this.pos[0] + trans[0], this.pos[1] + trans[1]], this.theta)
 
     ctx.fillStyle = Ship.COLOR;
     ctx.strokeStyle = '#ccddff';

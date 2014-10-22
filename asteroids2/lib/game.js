@@ -38,6 +38,9 @@
     var game = this;
     this.allObjects().forEach(function (obj) {
       obj.draw(ctx);
+      if (game.isNearEdge(obj)) {
+        game.drawFourMore(obj, ctx);
+      }
     });
     // var bulletsToRemove = []
     // this.allObjects().forEach(function (obj) {
@@ -51,6 +54,15 @@
     //   game.removeBullets(bulletsToRemove)
     // };
   };
+
+  Game.prototype.drawFourMore = function (obj, ctx) {
+    obj.draw(ctx, [-Game.DIM_X, 0]);
+    obj.draw(ctx, [Game.DIM_X, 0]);
+    obj.draw(ctx, [0, Game.DIM_Y]);
+    obj.draw(ctx, [0, -Game.DIM_Y]);
+  };
+
+
 
 
   //  UTILITY  //
@@ -77,6 +89,14 @@
 
   Game.prototype.canvasMidpoint = function () {
     return [Game.DIM_X / 2, Game.DIM_Y / 2];
+  };
+
+  Game.prototype.isNearEdge = function (obj) {
+    if (obj.wrappable && obj.radius > 5) {
+      return (obj.pos[0] < obj.radius || obj.pos[0] > Game.DIM_X - obj.radius ||
+              obj.pos[1] < obj.radius || obj.pos[1] > Game.DIM_Y - obj.radius);
+    }
+    return false;
   };
 
 
