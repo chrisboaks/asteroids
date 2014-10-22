@@ -15,6 +15,8 @@
   MovingObject.prototype.draw = function (ctx, translation) {
     var trans = translation || [0, 0]
     ctx.fillStyle = this.color;
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.arc(
       this.pos[0] + trans[0],
@@ -25,6 +27,7 @@
       false);
 
       ctx.fill();
+      ctx.stroke();
   };
 
   MovingObject.prototype.isCollidedWith = function (otherObject) {

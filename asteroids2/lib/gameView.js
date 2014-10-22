@@ -33,6 +33,13 @@
   };
 
   GameView.prototype.start = function () {
+    var music = new Audio('./xi.mp3');
+    $(music).bind('ended', function () {
+      music.currentTime = 0;
+      music.play();
+    });
+    music.play();
+
     this.bindKeyHandlers();
 
     window.setInterval((function () {
