@@ -9,6 +9,7 @@
     this.game = options.game;
     this.wrappable = options.wrappable;
     this.theta = 0;
+    this.omega = options.omega;
   };
 
   MovingObject.prototype.draw = function (ctx) {

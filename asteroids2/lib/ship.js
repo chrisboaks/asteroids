@@ -9,7 +9,8 @@
       color: Ship.COLOR,
       radius: Ship.RADIUS,
       game: options.game,
-      wrappable: true
+      wrappable: true,
+      omega: Ship.OMEGA
     }
 
     Asteroids.MovingObject.call(this, newOptions);

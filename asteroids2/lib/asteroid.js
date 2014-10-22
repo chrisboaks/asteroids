@@ -9,7 +9,8 @@
       color: Asteroid.randomGray(), //Asteroid.brownGenerator(),
       radius: Asteroid.RADIUS,
       game: options.game,
-      wrappable: true
+      wrappable: true,
+      omega: 0.15
     }
 
     Asteroids.MovingObject.call(this, newOptions);
@@ -25,7 +26,6 @@
     var char = function(){
       return Math.floor(Math.random() * 7) + 60;
     };
-    console.log(char(), char(), char())
     return '#' + char() + char() + char();
   };
 
