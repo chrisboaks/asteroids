@@ -17,7 +17,7 @@
   };
 
   Asteroid.RADIUS = 60;
-  Asteroid.VELOCITY = 4;
+  Asteroid.VELOCITY = 2;
   Asteroid.COLORS = '789';                                    // not used
 
   Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);

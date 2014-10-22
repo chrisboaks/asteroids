@@ -33,7 +33,7 @@
   };
 
   GameView.prototype.start = function () {
-    var music = new Audio('./xi.mp3');
+    var music = new Audio('./lib/xi.mp3');
     $(music).bind('ended', function () {
       music.currentTime = 0;
       music.play();
