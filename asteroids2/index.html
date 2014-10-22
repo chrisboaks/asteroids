@@ -1,75 +1,38 @@
 <html>
-  <head>
-    <style type="text/css">
+<head>
 
-    h1, canvas, body {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      font: inherit;
-    }
+  <link rel="stylesheet" href="lib/stylesheet.css" type="text/css">
 
-      canvas {
-        display: block;
-        border: 1px solid #666;
-        margin: auto;
-        background: #161616;
-      }
+  <title>| a s t e r o i d s |</title>
 
-      body {
-        font-family: sans-serif;
-        padding: 25px auto;
-        width: 100%;
-        background: black;
-      }
+</head>
 
-      h1 {
-        text-align: center;
-        margin: 25px auto;
-        font-size: 36px;
-        font-weight: 100;
-        color: #E3E3E3;
-      }
+<body>
 
-    </style>
+  <h1>| a s t e r o i d s |</h1>
 
-    <title>| a s t e r o i d s |</title>
+  <canvas id='game-canvas' width='1000' height='800'></canvas>
 
-    <!-- <audio controls loop autoplay><source src='./lib/xi.mp3' type='audio/mpeg'></audio> -->
+  <script src='./lib/movingObject.js'></script>
+  <script src='./lib/util.js'></script>
+  <script src='./lib/asteroid.js'></script>
+  <script src='./lib/bgstar.js'></script>
+  <script src='./lib/ship.js'></script>
+  <script src='./lib/game.js'></script>
+  <script src='./lib/gameView.js'></script>
+  <script src='./lib/bullet.js'></script>
+  <script src='./lib/keymaster.js'></script>
+  <script src='./lib/jquery.js'></script>
 
-  </head>
-
-  <body>
+  <script>
+    var canvas = document.getElementById('game-canvas');
+    var ctx = canvas.getContext('2d');
+    new Asteroids.GameView(
+      new Asteroids.Game(), ctx
+    ).start();
+  </script>
 
 
 
-
-    <h1>| a s t e r o i d s |</h1>
-
-    <canvas id='game-canvas' width='1000' height='800'></canvas>
-
-
-    <script src='./lib/movingObject.js'></script>
-    <script src='./lib/util.js'></script>
-    <script src='./lib/asteroid.js'></script>
-    <script src='./lib/bgstar.js'></script>
-    <script src='./lib/ship.js'></script>
-    <script src='./lib/game.js'></script>
-    <script src='./lib/gameView.js'></script>
-    <script src='./lib/bullet.js'></script>
-    <script src='./lib/keymaster.js'></script>
-    <script src='./lib/jquery.js'></script>
-
-    <script>
-      var canvas = document.getElementById('game-canvas');
-      var ctx = canvas.getContext('2d');
-      new Asteroids.GameView(
-        new Asteroids.Game(), ctx
-      ).start();
-
-    </script>
-
-
-
-  </body>
+</body>
 </html>
