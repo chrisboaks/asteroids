@@ -35,13 +35,13 @@
     return 'rgb(' + [r, g, 0].join(',') + ')';
   }
 
-  // Asteroid.prototype.collideWith = function (otherObj) {
-//     if (otherObj instanceof Asteroids.Ship) {
-//       otherObj.relocate();
-//     } else if (otherObj instanceof Asteroids.Bullet) {
-//       this.game.removeAsteroid(this);
-//       this.game.removeBullet(otherObj);
-//     }
-//   };
+  Asteroid.prototype.collideWith = function (otherObj) {
+    if (otherObj instanceof Asteroids.Ship) {
+      otherObj.relocate();
+    } else if (otherObj instanceof Asteroids.Bullet) {
+      this.game.removeAsteroid(this);
+      this.game.removeBullet(otherObj);
+    }
+  };
 
 })();

@@ -4,7 +4,7 @@
   var Game = Asteroids.Game = function() {
     this.asteroids = this.addDebris(Asteroids.Asteroid, Game.NUM_ASTEROIDS);
     this.bgstars = this.addDebris(Asteroids.BGStar, Game.NUM_BGSTARS);
-    // this.bullets = [];
+    this.bullets = [];
     this.ship = new Asteroids.Ship({game: this});
 
   };
@@ -20,7 +20,8 @@
 
   Game.prototype.step = function () {
     this.moveObjects();
-    // this.checkCollisions();
+    this.checkAsteroidCollisions(this.bullets);
+    this.checkAsteroidCollisions([this.ship]);
   };
 
   Game.prototype.moveObjects = function () {
@@ -63,12 +64,10 @@
   };
 
 
-
-
   //  UTILITY  //
 
   Game.prototype.allObjects = function () {
-    return this.bgstars.concat(this.asteroids).concat(this.ship);
+    return this.bgstars.concat(this.asteroids).concat(this.ship).concat(this.bullets);
   };
 
   Game.prototype.randomPosition = function () {
@@ -110,6 +109,15 @@
     return result;
   };
 
+  Game.prototype.checkAsteroidCollisions = function (ary) {
+    for (var i = 0; i < this.asteroids.length; i++) {
+      for (var j = 0; j < ary.length; j++) {
+        if (this.asteroids[i].isCollidedWith(ary[j])) {
+          this.asteroids[i].collideWith(ary[j]);
+        }
+      }
+    }
+  };
 
 
 //
@@ -127,18 +135,23 @@
 
 
 
-  // Game.prototype.removeAsteroid = function (asteroid) {
-//     var i = this.asteroids.indexOf(asteroid);
-//     this.asteroids.splice(i, 1);
-//   };
+  Game.prototype.removeAsteroid = function (asteroid) {
+    var i = this.asteroids.indexOf(asteroid);
+    this.asteroids.splice(i, 1);
+  };
+
+  Game.prototype.removeBullet = function (bullet) {
+    var i = this.bullets.indexOf(bullet);
+    this.bullets.splice(i, 1);
+  };
 //
 //   Game.prototype.allObjects = function () {
 //     return this.asteroids.concat([this.ship]).concat(this.bullets);
 //   };
 //
-//   Game.prototype.addBullet = function (bullet) {
-//     this.bullets.push(bullet);
-//   };
+  Game.prototype.addBullet = function (bullet) {
+    this.bullets.push(bullet);
+  };
 //
 //   Game.prototype.removeBullets = function (bulletsToRemove) {
 //     var that = this;

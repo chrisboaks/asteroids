@@ -40,7 +40,7 @@
   };
 
   Ship.prototype.power = function (impulse) {
-    var direction = Asteroids.Util.unitize(this.theta + Math.PI * 3 / 2); //correction for theta
+    var direction = this.direction()
 
     var possVx = this.vel[0] + direction[0] * Ship.IMPULSE * impulse;
     var possVy = this.vel[1] + direction[1] * Ship.IMPULSE * impulse;
@@ -48,6 +48,10 @@
     if (Asteroids.Util.magnitude([0,0], [possVx, possVy]) < Ship.MAX_V ) {
       this.vel = [possVx, possVy];
     }
+  };
+
+  Ship.prototype.direction = function () {
+    return Asteroids.Util.unitize(this.theta + Math.PI * 3 / 2);
   };
 
   Ship.prototype.draw = function(ctx, translation) {
@@ -80,18 +84,13 @@
 
   };
 
-
-
   Ship.prototype.turn = function (dir) {
     this.theta += dir * Ship.OMEGA;
   };
 
-  //
-  // Ship.prototype.fireBullet = function () {
-  //   bullet = new Asteroids.Bullet([this.posX, this.posY], this.dirNormal(), this.game);
-  //   this.game.addBullet(bullet);
-  // };
-
-
+  Ship.prototype.fireBullet = function () {
+    bullet = new Asteroids.Bullet(this.pos, this.direction(), this.game);
+    this.game.addBullet(bullet);
+  };
 
 })();

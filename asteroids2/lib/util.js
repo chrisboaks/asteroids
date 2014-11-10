@@ -37,7 +37,7 @@
   };
 
   var normalize = Asteroids.Util.normalize = function (vec) {
-    var thisLength = Utils.magnitude([0, 0], vec);
+    var thisLength = Util.magnitude([0, 0], vec);
     return [vec[0] / thisLength, vec[1] / thisLength];
   };
 
@@ -56,6 +56,12 @@
       results.push([x, y]);
     })
     return results;
+  };
+
+  var scalarMultiply = Asteroids.Util.scalarMultiply = function (vector, scalar) {
+    var x = vector[0];
+    var y = vector[1];
+    return [x * scalar, y * scalar];
   };
 
 })();
