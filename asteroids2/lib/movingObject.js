@@ -37,7 +37,7 @@
   };
 
   MovingObject.prototype.move = function () {
-    this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]]
+    this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
   };
 
 })();
