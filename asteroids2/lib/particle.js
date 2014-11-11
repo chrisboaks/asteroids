@@ -22,9 +22,15 @@
   Asteroids.Util.inherits(Particle, Asteroids.MovingObject);
 
   Particle.prototype.particleVelocity = function () {
-    var randomTheta = Math.random() * 1/2 * Math.PI;
-    var speed = 8 + 2* Math.sin(randomTheta);
-    return Asteroids.Util.randomVectorOfLength(speed);
+    // var randomTheta = Math.random() * 1/2 * Math.PI;
+    // var sin = Math.sin(randomTheta);
+    // var speed = 8 + 2 * sin * sin;
+    var speed = 3 * Math.random() + 7;
+    if (speed > 8) {
+      return Asteroids.Util.randomVectorOfLength(8);
+    } else {
+      return Asteroids.Util.randomVectorOfLength(speed);
+    }
   };
 
   Particle.prototype.remove = function () {
@@ -43,6 +49,21 @@
   Particle.prototype.toHex = function(val) {
     var hex = val.toString(16);
     return hex.length === 1 ? "0" + hex : hex;
+  };
+
+  Particle.prototype.draw = function (ctx, translation) {
+    var trans = translation || [0, 0]
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(
+      this.pos[0] + trans[0],
+      this.pos[1] + trans[1],
+      this.radius,
+      0,
+      2 * Math.PI,
+      false);
+
+      ctx.fill();
   };
 
 })();
