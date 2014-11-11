@@ -6,7 +6,7 @@
     this.bgstars = this.addDebris(Asteroids.BGStar, Game.NUM_BGSTARS);
     this.bullets = [];
     this.ship = new Asteroids.Ship({game: this});
-
+    this.particles = [];
   };
 
   Game.DIM_X = 1000;
@@ -28,8 +28,8 @@
     var game = this;
     this.allObjects().forEach(function (obj) {
       obj.move();
-      if (game.isOutOfBounds(obj.pos) && obj.wrappable) {
-        game.wrap(obj);
+      if (game.isOutOfBounds(obj.pos)) {
+        game.wrapOrRemove(obj);
       }
     });
   };
@@ -67,7 +67,7 @@
   //  UTILITY  //
 
   Game.prototype.allObjects = function () {
-    return this.bgstars.concat(this.asteroids).concat(this.ship).concat(this.bullets);
+    return this.bgstars.concat(this.asteroids).concat(this.ship).concat(this.bullets).concat(this.particles);
   };
 
   Game.prototype.randomPosition = function () {
@@ -80,10 +80,14 @@
     return (pos[0] <= 0 || pos[1] <= 0 || pos[0] > Game.DIM_X || pos[1] > Game.DIM_Y);
   };
 
-  Game.prototype.wrap = function (obj) {
-    var x = ((obj.pos[0] % Game.DIM_X) + Game.DIM_X) % Game.DIM_X;
-    var y = ((obj.pos[1] % Game.DIM_Y) + Game.DIM_Y) % Game.DIM_Y;
-    obj.pos = [x, y];
+  Game.prototype.wrapOrRemove = function (obj) {
+    if (obj.wrappable) {
+      var x = ((obj.pos[0] % Game.DIM_X) + Game.DIM_X) % Game.DIM_X;
+      var y = ((obj.pos[1] % Game.DIM_Y) + Game.DIM_Y) % Game.DIM_Y;
+      obj.pos = [x, y];
+    } else {
+      obj.remove();
+    }
   };
 
   Game.prototype.canvasMidpoint = function () {
@@ -152,6 +156,10 @@
   Game.prototype.addBullet = function (bullet) {
     this.bullets.push(bullet);
   };
+
+  Game.prototype.addParticle = function (particle) {
+    this.particles.push(particle)
+  }
 //
 //   Game.prototype.removeBullets = function (bulletsToRemove) {
 //     var that = this;

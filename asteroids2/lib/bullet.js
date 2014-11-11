@@ -22,6 +22,11 @@
 
   Asteroids.Util.inherits(Bullet, Asteroids.MovingObject);
 
+  Bullet.prototype.remove = function () {
+    var i = this.game.bullets.indexOf(this);
+    this.game.bullets.splice(i, 1);
+  };
+
   // Bullet.prototype.collideWith = function (otherObj) {
   //   if (otherObj instanceof Asteroids.Asteroid) {
   //     this.game.removeAsteroid(otherObj);

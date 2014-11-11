@@ -39,9 +39,19 @@
     if (otherObj instanceof Asteroids.Ship) {
       otherObj.relocate();
     } else if (otherObj instanceof Asteroids.Bullet) {
-      this.game.removeAsteroid(this);
-      this.game.removeBullet(otherObj);
+      this.explode(this.pos);
+      this.remove();
+      otherObj.remove();
     }
+  };
+
+  Asteroid.prototype.remove = function () {
+    var i = this.game.asteroids.indexOf(this);
+    this.game.asteroids.splice(i, 1);
+  };
+
+  Asteroid.prototype.explode = function (pos) {
+    Asteroids.Explosion.explode(pos);
   };
 
 })();

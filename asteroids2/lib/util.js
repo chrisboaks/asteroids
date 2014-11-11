@@ -9,13 +9,6 @@
     childClass.prototype = new Surrogate();
   };
 
-  var randomVec = Asteroids.Util.randomVec = function (length) {
-    var randomTheta = Math.random() * 2 * Math.PI;
-    var velX = Math.cos(randomTheta) * length;
-    var velY = Math.sin(randomTheta) * length;
-    return [velX, velY];
-  };
-
   var randomUnitVector = Asteroids.Util.randomUnitVector = function() {
     var randomTheta = Math.random() * 2 * Math.PI;
     var x = Math.cos(randomTheta);
