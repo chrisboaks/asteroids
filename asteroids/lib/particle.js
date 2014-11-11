@@ -22,9 +22,6 @@
   Asteroids.Util.inherits(Particle, Asteroids.MovingObject);
 
   Particle.prototype.particleVelocity = function () {
-    // var randomTheta = Math.random() * 1/2 * Math.PI;
-    // var sin = Math.sin(randomTheta);
-    // var speed = 8 + 2 * sin * sin;
     var speed = 3 * Math.random() + 7;
     if (speed > 8) {
       return Asteroids.Util.randomVectorOfLength(8);

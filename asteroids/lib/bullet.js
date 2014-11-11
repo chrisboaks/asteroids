@@ -27,11 +27,4 @@
     this.game.bullets.splice(i, 1);
   };
 
-  // Bullet.prototype.collideWith = function (otherObj) {
-  //   if (otherObj instanceof Asteroids.Asteroid) {
-  //     this.game.removeAsteroid(otherObj);
-  //     this.game.removeBullet(this);
-  //   }
-  // };
-
 })();

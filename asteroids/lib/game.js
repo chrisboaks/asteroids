@@ -43,17 +43,6 @@
         game.drawFourMore(obj, ctx);
       }
     });
-    // var bulletsToRemove = []
-    // this.allObjects().forEach(function (obj) {
-    //   if (obj instanceof Asteroids.Bullet && Game.isOutOfBounds([obj.posX, obj.posY])) {
-    //     bulletsToRemove.push(obj);
-    //   } else {
-    //     obj.draw(ctx);
-    //   }
-    // });
-    // if (bulletsToRemove.length > 0) {
-    //   game.removeBullets(bulletsToRemove)
-    // };
   };
 
   Game.prototype.drawFourMore = function (obj, ctx) {
@@ -123,22 +112,6 @@
     }
   };
 
-
-//
-//   Game.prototype.checkCollisions = function () {
-//     var allObjects = this.allObjects();
-//     var numObjects = allObjects.length;
-//     for (var i = 0; i < numObjects - 1; i++) {
-//       for (var j = i + 1; j < numObjects; j++) {
-//         if (this.allObjects()[i].isCollidedWith(this.allObjects()[j])) {
-//           this.allObjects()[i].collideWith(this.allObjects()[j]);
-//         }
-//       }
-//     };
-//   };
-
-
-
   Game.prototype.removeAsteroid = function (asteroid) {
     var i = this.asteroids.indexOf(asteroid);
     this.asteroids.splice(i, 1);
@@ -148,11 +121,7 @@
     var i = this.bullets.indexOf(bullet);
     this.bullets.splice(i, 1);
   };
-//
-//   Game.prototype.allObjects = function () {
-//     return this.asteroids.concat([this.ship]).concat(this.bullets);
-//   };
-//
+
   Game.prototype.addBullet = function (bullet) {
     this.bullets.push(bullet);
   };
@@ -160,15 +129,5 @@
   Game.prototype.addParticle = function (particle) {
     this.particles.push(particle)
   }
-//
-//   Game.prototype.removeBullets = function (bulletsToRemove) {
-//     var that = this;
-//     bulletsToRemove.forEach(function (bullet) {
-  //     var i = that.bullets.indexOf(bullet);
-  //     that.bullets.splice(i, 1);
-  //   });
-  // };
-  //
-
 
 })();
