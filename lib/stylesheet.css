@@ -1,4 +1,4 @@
-h1, canvas, body {
+h1, h6, canvas, body {
   margin: 0;
   padding: 0;
   border: 0;
@@ -25,4 +25,15 @@ h1 {
   font-size: 36px;
   font-weight: 100;
   color: #E3E3E3;
+}
+
+div.gamespace {
+  width: 1002px;
+  display: block;
+  margin: auto;
+}
+
+div.instructions {
+  font: 11px sans-serif;
+  color: #666;
 }
